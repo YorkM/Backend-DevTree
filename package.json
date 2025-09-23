@@ -1,0 +1,28 @@
+{
+    "name": "prueba-node",
+    "version": "1.0.0",
+    "description": "prueba de codigo en node",
+    "main": "index.ts",
+    "scripts": {
+        "dev": "nodemon src/index.ts"
+    },
+    "author": "YLMM",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/bcrypt": "^6.0.0",
+        "@types/express": "^5.0.3",
+        "@types/slug": "^5.0.9",
+        "nodemon": "^3.1.10",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.9.2"
+    },
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "colors": "^1.4.0",
+        "dotenv": "^17.2.2",
+        "express": "^5.1.0",
+        "express-validator": "^7.2.1",
+        "mongoose": "^8.18.1",
+        "slug": "^11.0.0"
+    }
+}
