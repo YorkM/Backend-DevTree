@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { validationResult } from 'express-validator';
 import slug from 'slug';
 import User from "../models/User";
 import { comparePassword, hasPassword } from '../utils/auth';
+import { generateJWT } from '../utils/jwt';
 
 // CREAR UNA CUENTA DE USUARIO
 export const createAccount = async (req: Request, res: Response) => {
@@ -42,10 +42,9 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const result = await comparePassword(password, user.password);
+    if (!result) return res.status(401).json({error: "Usuario no autenticado"});
 
-    if (!result) {
-        return res.status(401).json({error: "Usuario no autenticado"});
-    }
+    const token = generateJWT({id: user._id});
 
-    return res.status(200).send("Usuario autenticado correctamente");
+    return res.status(200).send(token);
 }
